@@ -3,75 +3,58 @@ import Link from 'next/link'
 
 export default function Home() {
   return (
+    
     <div className="container">
       <Head>
         <title>VenerationSpace</title>
         <link rel="icon" href="/cross.ico" />
       </Head>
 
+      <header className="topnav">
+            <a href="/" className="firstnav">Home</a>
+            <a href="/statpages/about">About Us</a>
+            <a href="/statpages/apply">Apply</a>
+            <a href="/statpages/login" className="lastnav">Login</a>
+      </header>
       <main>
         <h1 className="title">
-          VenerationSpace
+          Veneration Space
         </h1>
 
-        <p className="description">
-          Part II: Graphic Design Is My Passion
-        </p>
-        {/* Main grid in center of the page */}
-        <div className="grid">
-          <a href="/statpages/about" className="card">
-            <h3>About &rarr;</h3>
-            <p>What is VenerationSpace?</p>
-          </a>
-
-          <a href="/statpages/example" className="card">
-            <h3>Example Space &rarr;</h3>
-            <p>What does a Space look like?</p>
-          </a>
-
-          <a href="/statpages/apply" className="card">
-            <h3>Apply for a Space &rarr;</h3>
-            <p>Wish to remember a loved one of your own? Start here.</p>
-          </a>
-
-          <a href="/statpages/search" className="card">
-            <h3>Search &rarr;</h3>
-            <p>Search for existing Spaces</p>
-          </a>
+        <div className="split">
+          <div>
+            <ul className="listButtons">
+                <li>
+                  <a href="/statpages/about" className="card">Search</a>
+                </li>
+                <li>
+                  <a href="/statpages/example" className="card">Create</a>
+                </li>
+            </ul>
+          </div>
+          
+          <div>
+          <img src="https://img3.stockfresh.com/files/s/spectral/m/27/1729712_stock-photo-cartoon-angel.jpg" alt="image placeholder" className="image"/>
+          </div>
         </div>
       </main>
 
-      {/* Bottom Bar */}
-      <footer>
-        <a href="/">Home</a>
-      </footer>
-
       {/* CSS Stuff */}
-      {/* Main color:   #959DA3 */}
+      {/* Main color:   #736b66 */}
       {/* Light accent: #D39130 */}
       {/* Dark accent:  #9E4943 */}
       {/* Light shade:  #EFF2EC */}
-      {/* Dark shade:   #363843 */}
+      {/* Dark shade:   ##d3a67a */}
       <style jsx>{`
         .container {
-          background-color: #363843;
-          min-height: 50vh;
-          padding: 0 0.5rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
+          background-color: #d3a67a;
+          height: 800px;
         }
 
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
+          main {
+            font-family: monaco, Consolas, "Lucida Console", monospace;
+          }
+        
         footer {
           width: 100%;
           height: 100px;
@@ -79,7 +62,7 @@ export default function Home() {
           display: flex;
           justify-content: center;
           align-items: center;
-          background-color:#959DA3;
+          background-color:#736b66;
         }
 
         footer img {
@@ -97,11 +80,6 @@ export default function Home() {
           text-decoration: none;
         }
 
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
-        }
-
         .title a:hover,
         .title a:focus,
         .title a:active {
@@ -109,15 +87,17 @@ export default function Home() {
         }
 
         .title {
-          margin: 0;
+          margin: 2.5% 0;
           line-height: 1.15;
           font-size: 4rem;
         }
 
         .title,
         .description {
+          filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.6));
+          -webkit-text-stroke: 1px black;
           text-align: center;
-          color: #D39130;
+          color: #f2f2f2;
         }
 
         .description {
@@ -126,59 +106,76 @@ export default function Home() {
         }
 
         code {
-          background: #fafafa;
+          background: #d3a67a;
           border-radius: 5px;
           padding: 0.75rem;
           font-size: 1.1rem;
           font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
             DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
         }
-
-        .grid {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-
-          max-width: 800px;
-          margin-top: 3rem;
+        .listButtons{
+          margin-top:-25%;
         }
 
+        .listButtons li {
+          display: block;
+          margin: 50% 0;
+
+        }
+        .split{
+          display: flex;
+        }
+        .split div{
+          margin: 0 auto;
+        }
+        .image{
+          filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.4));
+          height: 65%;
+          margin-right: -10rem;
+        }
         .card {
+          filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.4));
           margin: 1rem;
-          flex-basis: 45%;
-          padding: 1.5rem;
+          padding: 2rem 20%;
           text-align: left;
           color: inherit;
           text-decoration: none;
           border: 1px solid #eaeaea;
-          border-radius: 10px;
-          transition: color 0.15s ease, border-color 0.15s ease;
-          border-color:#EFF2EC;
-          background-color:#9E4943;
-          color:#EFF2EC;
+          border-radius: 5px;
+          border-color:#2e2c2b;
+          background-color: #d1694b;
+          color:#2e2c2b;
+          font-size: 70px;
         }
 
         .card:hover,
         .card:focus,
         .card:active {
-          color: #D39130;
-          border-color: #D39130;
-        }
-
-        .card h3 {
-          margin: 0 0 1rem 0;
-          font-size: 1.5rem;
-        }
-
-        .card p {
-          margin: 0;
-          font-size: 1.25rem;
-          line-height: 1.5;
+          background-color:#9E4943;
         }
 
         .logo {
           height: 1em;
+        }
+        .topnav {
+          filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.7));
+          font-family: monaco, Consolas, "Lucida Console", monospace;
+          overflow: hidden;
+          background-color: #5d534d;
+        }
+        
+        .topnav a {
+          width: 25%;
+          float: left;
+          color: #f2f2f2;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+          font-size: 24px;
+        }
+        
+        .topnav a:hover {
+          background-color: #302d2b;
         }
 
         @media (max-width: 600px) {

@@ -25,7 +25,7 @@ export default function Home() {
           <div>
             <ul className="listButtons">
                 <li>
-                  <a href="/statpages/about" className="card">Search</a>
+                  <a href="/statpages/search" className="card">Search</a>
                 </li>
                 <li>
                   <a href="/statpages/example" className="card">Create</a>

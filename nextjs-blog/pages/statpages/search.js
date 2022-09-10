@@ -30,6 +30,11 @@ export default function Search(){
         </div>
       </main>
 
+
+
+
+      
+
       {/* CSS Stuff */}
       {/* Main color:   #959DA3 */}
       {/* Light accent: #D39130 */}

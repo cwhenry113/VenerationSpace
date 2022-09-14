@@ -1,5 +1,12 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js"
+  "/": "pages/index.html",
+  "/statpages/about": "pages/statpages/about.html",
+  "/statpages/login": "pages/statpages/login.html",
+  "/statpages/apply": "pages/statpages/apply.html",
+  "/statpages/example": "pages/statpages/example.html",
+  "/statpages/search": "pages/statpages/search.html",
+  "/_document": "pages/_document.js",
+  "/404": "pages/404.html"
 }

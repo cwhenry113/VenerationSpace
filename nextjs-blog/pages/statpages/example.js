@@ -9,21 +9,21 @@ export default function Example(){
                 <a href="/" className="navItem">
                     Home
                 </a>
-                <a href="/statpages/about" className="navItem">
+                <Link href="/statpages/about" className="navItem">
                     About
-                </a>
-                <a href="/statpages/apply" className="navItem">
+                </Link>
+                <Link href="/statpages/apply" className="navItem">
                     Apply
-                </a>
-                <a href="/statpages/example" className="navItem">
+                </Link>
+                <Link href="/statpages/example" className="navItem">
                     Example
-                </a>
-                <a href="/statpages/search" className="navItem">
+                </Link>
+                <Link href="/statpages/search" className="navItem">
                     Search
-                </a>
-                <a href="/statpages/login" className="navItem">
+                </Link>
+                <Link href="/statpages/login" className="navItem">
                     Log in
-                </a>
+                </Link>
             </div>
             <div className="bioBox">
                 <p className="bioName">Ghassan "Punished" Alkadi</p>

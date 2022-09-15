@@ -30,10 +30,25 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+    "/statpages/about": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/statpages/about.js"
+    ],
+    "/statpages/apply": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/statpages/apply.js"
+    ],
     "/statpages/example": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/statpages/example.js"
+    ],
+    "/statpages/login": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/statpages/login.js"
     ]
   },
   "ampFirstPages": []

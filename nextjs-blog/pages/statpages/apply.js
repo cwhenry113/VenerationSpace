@@ -13,24 +13,24 @@ export default function Apply(){
       </Head>
       <div class="ui menu" style={{ background: '#547FE8', color: 'white'}}>
         <div class="ui large header item" >
-          <a href="/" class="ui item" style={{ color: 'white'}}>
+          <Link href="/" class="ui item" style={{ color: 'white'}}>
             Home
-          </a>
-          <a href="/statpages/about" class="ui item" style={{ color: 'white'}}>
+          </Link>
+          <Link href="/statpages/about" class="ui item" style={{ color: 'white'}}>
             About Us
-          </a>
-          <a href="/statpages/apply" class="ui item" style={{ color: 'white'}}>
+          </Link>
+          <Link href="/statpages/apply" class="ui item" style={{ color: 'white'}}>
             Apply
-          </a>
-          <a href="/statpages/login" class="ui item" style={{ color: 'white'}}>
+          </Link>
+          <Link href="/statpages/login" class="ui item" style={{ color: 'white'}}>
             Login
-          </a>
-          <a href="/statpages/search" class="ui item" style={{ color: 'white'}}>
+          </Link>
+          <Link href="/statpages/search" class="ui item" style={{ color: 'white'}}>
             Search
-          </a>
-          <a href="/statpages/example" class="ui item" style={{ color: 'white'}}>
+          </Link>
+          <Link href="/statpages/example" class="ui item" style={{ color: 'white'}}>
             Create
-          </a>
+          </Link>
         </div>
       </div>
       <div class = "ui equal width middle aligned center aligned grid" style={{ background: '#C1C6E4'}} >

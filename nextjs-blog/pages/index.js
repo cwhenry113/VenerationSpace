@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import React from 'react'
+import 'semantic-ui-css/semantic.min.css'
 import 'semantic-ui-css/test2.css'
 
 export default function Home() {
@@ -13,41 +14,41 @@ export default function Home() {
       </Head>
       <div class="ui menu" style={{ background: '#547FE8', color: '#FFFFFF'}}>
         <div class="ui large header item" >
-          <Link href="/" class="ui item" style={{ color: 'white'}}>
+          <a href="/" class="ui item" style={{ color: 'white'}}>
             Home
-          </Link>
-          <Link href="/statpages/about" class="ui item" style={{ color: 'white'}}>
+          </a>
+          <a href="/statpages/about" class="ui item" style={{ color: 'white'}}>
             About Us
-          </Link>
-          <Link href="/statpages/apply" class="ui item" style={{ color: 'white'}}>
+          </a>
+          <a href="/statpages/apply" class="ui item" style={{ color: 'white'}}>
             Apply
-          </Link>
-          <Link href="/statpages/login" class="ui item" style={{ color: 'white'}}>
+          </a>
+          <a href="/statpages/login" class="ui item" style={{ color: 'white'}}>
             Login
-          </Link>
-          <Link href="/statpages/search" class="ui item" style={{ color: 'white'}}>
+          </a>
+          <a href="/statpages/search" class="ui item" style={{ color: 'white'}}>
             Search
-          </Link>
-          <Link href="/statpages/example" class="ui item" style={{ color: 'white'}}>
+          </a>
+          <a href="/statpages/example" class="ui item" style={{ color: 'white'}}>
             Create
-          </Link>
+          </a>
         </div>
       </div>
       <div class = "ui equal width middle aligned center aligned grid" style={{ background: '#C1C6E4'}} >
         <div class="column six wide middle aligned grid" >
           <div class="row">
-            <Link href="/statpages/search">
+            <a href="/statpages/search">
               <button class = "ui color1 button" style={{ fontSize: '4.5rem', margin:'5rem auto'}}>
                 Search
               </button>
-            </Link>
+            </a>
           </div>
           <div class="row">
-            <Link href="/statpages/example">
+          <a href="/statpages/example">
               <button class = "ui color1 button" style={{ fontSize: '4.5rem', margin:'5rem auto'}}>
                 Create
               </button>
-            </Link>
+              </a>
           </div>
         </div>
         <div class="column ten wide">

@@ -4,7 +4,7 @@ import React from 'react';
 import 'semantic-ui-css/semantic.min.css'
 import 'semantic-ui-css/test2.css'
 
-export default function Example(){
+export default function About(){
     return(
     <div className="container" style={{ background: '#C1C6E4'}}>
     <Head style={{ background: '#BEC7E4'}}>

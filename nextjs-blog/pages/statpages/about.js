@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import React from 'react';
 import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css/test2.css'
 
 export default function About(){
     return(
@@ -12,24 +13,24 @@ export default function About(){
     </Head>
     <div class="ui menu" style={{ background: '#547FE8', color: 'white'}}>
       <div class="ui large header item" >
-        <Link href="/" class="ui item" style={{ color: 'white'}}>
-          Home
-        </Link>
-        <Link href="/statpages/about" class="ui item" style={{ color: 'white'}}>
-          About Us
-        </Link>
-        <Link href="/statpages/apply" class="ui item" style={{ color: 'white'}}>
-          Apply
-        </Link>
-        <Link href="/statpages/login" class="ui item" style={{ color: 'white'}}>
-          Login
-        </Link>
-        <Link href="/statpages/search" class="ui item" style={{ color: 'white'}}>
-          Search
-        </Link>
-        <Link href="/statpages/example" class="ui item" style={{ color: 'white'}}>
-          Create
-        </Link>
+          <a href="/" class="ui item" style={{ color: 'white'}}>
+            Home
+          </a>
+          <a href="/statpages/about" class="ui item" style={{ color: 'white'}}>
+            About Us
+          </a>
+          <a href="/statpages/apply" class="ui item" style={{ color: 'white'}}>
+            Apply
+          </a>
+          <a href="/statpages/login" class="ui item" style={{ color: 'white'}}>
+            Login
+          </a>
+          <a href="/statpages/search" class="ui item" style={{ color: 'white'}}>
+            Search
+          </a>
+          <a href="/statpages/example" class="ui item" style={{ color: 'white'}}>
+            Create
+          </a>
       </div>
     </div>
     <div class = "ui equal width middle aligned center aligned grid" style={{ background: '#C1C6E4'}} >

@@ -3,33 +3,16 @@ import 'semantic-ui-css/test2.css'
 import React from 'react'
 import {
   Container,
-  Divider,
-  Grid,
   Header,
   Image,
-  List,
-  Menu,
-  Segment,
   Button,
 } from 'semantic-ui-react'
+import { NavBar } from './components/NavBar';
 
-const Home = () => (
+
+const App = () => (
   <div>
-    <Menu fixed='top' inverted>
-      <Container>
-        <Menu.Item as='a' header>
-          <Image size='mini' src='/logo.png' style={{ marginRight: '1.5em' }} />
-          Veneration Space
-        </Menu.Item>
-        <Menu.Item as='a'>Home</Menu.Item>
-        <Menu.Item as='a'>About</Menu.Item>
-        <Menu.Item as='a'>Apply</Menu.Item>
-        <Menu.Item as='a'>Login</Menu.Item>
-      </Container>
-    </Menu>
-
-      
-
+    <NavBar />
     <Container text style={{ marginTop: '7em' }}>
       <Header as='h1'>Apply for a free online memorial for your loved one</Header>
       <p>This is a basic fixed menu template using fixed size containers. we can add some sutext here to add detail.</p>
@@ -48,4 +31,4 @@ const Home = () => (
   </div>
 )
 
-export default Home;
+export default App;

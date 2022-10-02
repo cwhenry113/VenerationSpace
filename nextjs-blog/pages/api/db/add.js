@@ -8,10 +8,10 @@ export default async function addVen(req, res) {
     console.log('CONNECTED TO MONGO');
 
     console.log('CREATING DOCUMENT');
-    const test = await Veneration.create(req.body);
+    const ven = await Veneration.create(req.body);
     console.log('CREATED DOCUMENT');
 
-    res.json({ test });
+    res.json({ ven });
   } catch (error) {
     console.log(error);
     res.json({ error });

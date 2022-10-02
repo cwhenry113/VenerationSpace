@@ -14,9 +14,6 @@ export default function Create(){
             body: JSON.stringify({
                 givenName: 'PlaceholderGiven',
                 familyName: 'PlaceholderFamily',
-                birthDay: '01',
-                birthMonth: '01',
-                birthYear: '1800',
             }),
         });
         const data = await res.json();

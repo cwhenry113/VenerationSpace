@@ -25,10 +25,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/statpages/venOption": [
+    "/venOption": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/statpages/venOption.js"
+      "static/chunks/pages/venOption.js"
     ]
   },
   "ampFirstPages": []

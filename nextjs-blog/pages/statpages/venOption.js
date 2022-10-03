@@ -33,16 +33,15 @@ export default function venOption(){
               </a>
           </div>
         </div>
-        <div class = "ui equal width middle aligned center aligned grid" style={{ background: '#C1C6E4'}} >
-            <h2 class="ui center aligned icon header">
+        <h2 class="ui center aligned icon header">
                 <i class="settings icon"></i>
                 Veneration Options
             </h2>
-            <h3 class="ui top attached header">
+            <h3 class="ui attached header">
                 Biographic Settings
             </h3>
             <div class="ui attached segment">
-                <p>Settings go here
+                <p>
                 </p>
             </div>
             <h3 class="ui attached header">
@@ -51,14 +50,12 @@ export default function venOption(){
             <div class="ui attached segment">
                 <p>
                     <div class="ui toggle checkbox">
-                        <input type="checkbox" name="public">
-                            <label>Allow comments from anybody who can see the page</label>
-                        </input>
+                        <input type="checkbox" name="public" />
+                            <label>Allow new comments to be submitted</label>
                     </div>
                     <div class="ui toggle checkbox">
-                        <input type="checkbox" name="public">
+                        <input type="checkbox" name="public" />
                             <label>Require comments to be checked by you before showing up</label>
-                        </input>
                     </div>          
                 </p>
             </div>
@@ -71,28 +68,22 @@ export default function venOption(){
                         <div class="grouped fields">
                             <label>Who should be able to see this page?</label>
                             <div class="field">
-                            <div class="ui radio checkbox">
-                                <input type="radio" name="example2" checked="checked">
-                                <label>Once a week</label>
-                            </div>
-                            </div>
-                            <div class="field">
-                            <div class="ui radio checkbox">
-                                <input type="radio" name="example2">
-                                <label>2-3 times a week</label>
-                            </div>
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="example2" checked="checked" />
+                                        <label>Anybody</label>
+                                </div>
                             </div>
                             <div class="field">
-                            <div class="ui radio checkbox">
-                                <input type="radio" name="example2">
-                                <label>Once a day</label>
-                            </div>
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="example2" />
+                                        <label>People with a link to the page</label>
+                                </div>
                             </div>
                             <div class="field">
-                            <div class="ui radio checkbox">
-                                <input type="radio" name="example2">
-                                <label>Twice a day</label>
-                            </div>
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="example2" />
+                                        <label>Nobody but me</label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -104,8 +95,6 @@ export default function venOption(){
             <button class="ui button">
                 Discard changes
             </button>
-
-        </div>
           <style jsx>{`
               .container{
                   min-height: 100vh;

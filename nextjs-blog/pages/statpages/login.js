@@ -3,37 +3,17 @@ import Link from 'next/link'
 import React from 'react';
 import 'semantic-ui-css/semantic.min.css'
 import 'semantic-ui-css/test2.css'
+import { NavBarOther } from '/components/NavBarOther';
 
 export default function Login(){
     return(
-      <div className="container" style={{ background: '#C1C6E4'}}>
+      <div className="container" style={{ backgroundImage: "url(/bioPictures/background.jpg)", backgroundSize: 'cover'}}>
       <Head style={{ background: '#BEC7E4'}}>
         <title>Veneration Space</title>
         <link rel="icon" href="/cross.ico" />
       </Head>
-      <div class="ui menu" style={{ background: '#547FE8', color: 'white'}}>
-        <div class="ui large header item" >
-          <a href="/" class="ui item" style={{ color: 'white'}}>
-            Home
-          </a>
-          <a href="/statpages/about" class="ui item" style={{ color: 'white'}}>
-            About Us
-          </a>
-          <a href="/statpages/apply" class="ui item" style={{ color: 'white'}}>
-            Apply
-          </a>
-          <a href="/statpages/login" class="ui item" style={{ color: 'white'}}>
-            Login
-          </a>
-          <a href="/statpages/search" class="ui item" style={{ color: 'white'}}>
-            Search
-          </a>
-          <a href="/statpages/example" class="ui item" style={{ color: 'white'}}>
-            Create
-          </a>
-        </div>
-      </div>
-      <div class = "ui equal width middle aligned center aligned grid" style={{ background: '#C1C6E4'}} >
+      <NavBarOther />
+      <div class = "ui equal width middle aligned center aligned grid" style={{ backgroundImage: "url(/bioPictures/background.jpg)", backgroundSize: 'cover', paddingTop: '6em'}} >
         <div class="ui massive message" style = {{ margin:'5rem'}}>
           <form class="ui form">
             <div class="massive field">

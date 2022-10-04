@@ -21,11 +21,11 @@ const onClickHandler = () => {
     return(
     <div className="main-container">
         {comments.map((text) => (
-            <div className="comment-container">{text}</div>
+            <div className="comment-container" style={{textAlign: "center"}}>{text}</div>
         ))}   
-        <div className="comment-flexbox">
+        <div className="comment-flexbox" style={{textAlign: "center"}}>
         <h3> Comment</h3>
-        <textarea value={comment} onChange={onChangeHandler} />
+        <textarea style={{textAlign: "center"}} value={comment} onChange={onChangeHandler} />
         <Button onClick={onClickHandler}>Submit</Button>
         
         </div>

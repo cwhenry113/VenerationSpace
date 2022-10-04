@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { 
 Button, 
 } from 'semantic-ui-react'
+import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css/test2.css'
 
 
 
@@ -26,8 +28,7 @@ const onClickHandler = () => {
         <div className="comment-flexbox" style={{textAlign: "center"}}>
         <h3> Comment</h3>
         <textarea style={{textAlign: "center"}} value={comment} onChange={onChangeHandler} />
-        <Button onClick={onClickHandler}>Submit</Button>
-        
+        <button onClick={onClickHandler} class = "ui color1 button">Submit</button>
         </div>
         </div>
     

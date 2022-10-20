@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   await connectMongo()
 
   switch (method) {
-    case 'GET' :
+    case 'GET':
       try {
         const tveneration = await veneration.findById(id)
         if (!tveneration) {
@@ -22,7 +22,7 @@ export default async function handler(req, res) {
       }
       break
 
-    case 'PUT' :
+    case 'PUT':
       try {
         const tveneration = await veneration.findByIdAndUpdate(id, req.body, {
           new: true,
@@ -37,7 +37,7 @@ export default async function handler(req, res) {
       }
       break
 
-    case 'DELETE' :
+    case 'DELETE':
       try {
         const tveneration = await veneration.deleteOne({ _id: id })
         if (!tveneration) {

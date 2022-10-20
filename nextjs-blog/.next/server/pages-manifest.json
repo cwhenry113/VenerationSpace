@@ -2,5 +2,6 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/venOption": "pages/venOption.js"
+  "/statpages/example2": "pages/statpages/example2.js",
+  "/": "pages/index.js"
 }

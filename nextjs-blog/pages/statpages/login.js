@@ -1,51 +1,68 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import React from 'react';
+import React, { useState } from 'react'
 import 'semantic-ui-css/semantic.min.css'
-import 'semantic-ui-css/test2.css'
+import { signIn } from 'next-auth/react'  
+import { NavBarOther } from '/components/NavBarOther';
+import { useRouter } from 'next/router'
+import { useSession } from "next-auth/react"
 
 export default function Login(){
+  const router =  useRouter()
+    const [authState, setAuthState] = useState({
+        username: '',
+        password: ''
+    })
+    const [pageState, setPageState] = useState({
+        error: '',
+        processing: false
+    })
+
+    const handleFieldChange = (e) => {
+        setAuthState(old => ({ ...old, [e.target.id]: e.target.value }))
+    }
+
+    const simplifyError = (error) => {
+        const errorMap = {
+            "CredentialsSignin": "Invalid username or password"
+        }
+        return errorMap[error] ?? "Unknown error occurred"
+    }
+
+    const handleAuth = async () => {
+        setPageState(old => ({...old, processing: true, error: ''}))
+        signIn('credentials', {
+            ...authState,
+            redirect: false
+        }).then(response => {
+            console.log(response)
+            if (response.ok) {
+                // Authenticate user
+                router.push("/")
+            } else {
+                setPageState(old => ({ ...old, processing: false, error: response.error }))
+            }
+        }).catch(error => {
+            console.log(error)
+            setPageState(old => ({...old, processing: false, error: error.message ?? "Something went wrong!"}))
+        })
+    }
     return(
-      <div className="container" style={{ background: '#C1C6E4'}}>
+      <div className="container" style={{ backgroundImage: "url(/bioPictures/background.jpg)", backgroundSize: 'cover'}}>
       <Head style={{ background: '#BEC7E4'}}>
         <title>Veneration Space</title>
         <link rel="icon" href="/cross.ico" />
       </Head>
-      <div class="ui menu" style={{ background: '#547FE8', color: 'white'}}>
-        <div class="ui large header item" >
-          <a href="/" class="ui item" style={{ color: 'white'}}>
-            Home
-          </a>
-          <a href="/statpages/about" class="ui item" style={{ color: 'white'}}>
-            About Us
-          </a>
-          <a href="/statpages/apply" class="ui item" style={{ color: 'white'}}>
-            Apply
-          </a>
-          <a href="/statpages/login" class="ui item" style={{ color: 'white'}}>
-            Login
-          </a>
-          <a href="/statpages/search" class="ui item" style={{ color: 'white'}}>
-            Search
-          </a>
-          <a href="/statpages/example" class="ui item" style={{ color: 'white'}}>
-            Create
-          </a>
-        </div>
-      </div>
-      <div class = "ui equal width middle aligned center aligned grid" style={{ background: '#C1C6E4'}} >
+      <NavBarOther />
+      
+      <div class = "ui equal width middle aligned center aligned grid" style={{ backgroundImage: "url(/bioPictures/background.jpg)", backgroundSize: 'cover'}} >
         <div class="ui massive message" style = {{ margin:'5rem'}}>
-          <form class="ui form">
-            <div class="massive field">
-              <label style={{fontSize:"2rem"}}>Username</label>
-              <input type="text" name="username" style={{fontSize:"2rem"}}/>
-            </div>
-            <div class="massive field">
-              <label style={{fontSize:"2rem"}}>Password</label>
-              <input type="text" name="password" style={{fontSize:"2rem"}}/>
-            </div>
-            <button class="ui color1 button" type="submit">Submit</button>
-          </form>
+                {
+                  pageState.error !== '' && <p>{simplifyError(pageState.error)}</p>
+                }
+                <input onChange={handleFieldChange} value={authState.username} label="Username" id='username' />
+                <input onChange={handleFieldChange} value={authState.password} label="Password" type='password' id='password' />
+                <button disabled={pageState.processing} onClick={handleAuth} variant='contained'>Login</button>
         </div>
       </div>
         <style jsx>{`
@@ -56,4 +73,6 @@ export default function Login(){
         </style>
     </div>
     )
+
+
 }

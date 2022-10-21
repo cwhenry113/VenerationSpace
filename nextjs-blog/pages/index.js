@@ -1,40 +1,35 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import React from 'react';
+import React from 'react'
 import 'semantic-ui-css/semantic.min.css'
-import 'semantic-ui-css/test2.css'
+import { NavBar } from '/components/NavBar';
+import {
+  Image
+} from 'semantic-ui-react'
+import { useSession } from "next-auth/react"
 
 export default function Home() {
+  const { data: session, status } = useSession()
   return (
     
-    <div className="container" style={{ background: '#C1C6E4'}}>
+    <div className="container" style={{ backgroundImage: "url(/bioPictures/background.jpg)", backgroundSize: 'cover'}}>
       <Head style={{ background: '#BEC7E4'}}>
         <title>Veneration Space</title>
         <link rel="icon" href="/cross.ico" />
       </Head>
-      <div class="ui menu" style={{ background: '#547FE8', color: 'white'}}>
-        <div class="ui large header item" >
-          <a href="/" class="ui item" style={{ color: 'white'}}>
-            Home
-          </a>
-          <a href="/statpages/about" class="ui item" style={{ color: 'white'}}>
-            About Us
-          </a>
-          <a href="/statpages/apply" class="ui item" style={{ color: 'white'}}>
-            Apply
-          </a>
-          <a href="/statpages/login" class="ui item" style={{ color: 'white'}}>
-            Login
-          </a>
-          <a href="/statpages/search" class="ui item" style={{ color: 'white'}}>
-            Search
-          </a>
-          <a href="/statpages/example" class="ui item" style={{ color: 'white'}}>
-            Create
-          </a>
-        </div>
-      </div>
-      <div class = "ui equal width middle aligned center aligned grid" style={{ background: '#C1C6E4'}} >
+      <NavBar />
+      
+      {!session && (
+          <>
+            not signed in<br />
+          </>
+        )}
+      {session && (
+          <>
+            Signed in as {session.user.name}<br />
+          </>
+        )}
+      <div class = "ui equal width middle aligned center aligned grid" style={{ backgroundImage: "url(/bioPictures/background.jpg)", backgroundSize: 'cover', paddingTop: '6em'}} >
         <div class="column six wide middle aligned grid" >
           <div class="row">
             <a href="/statpages/search">
@@ -44,7 +39,7 @@ export default function Home() {
             </a>
           </div>
           <div class="row">
-          <a href="/statpages/example">
+          <a href="/statpages/example2">
               <button class = "ui color1 button" style={{ fontSize: '4.5rem', margin:'5rem auto'}}>
                 Create
               </button>
@@ -53,7 +48,7 @@ export default function Home() {
         </div>
         <div class="column ten wide">
           <div class="ui large image">
-            <img src="https://img3.stockfresh.com/files/s/spectral/m/27/1729712_stock-photo-cartoon-angel.jpg" alt="image placeholder"/>
+            <Image src="/bioPictures/logo4.png" size='massive' centered />
           </div>
         </div>
       </div>

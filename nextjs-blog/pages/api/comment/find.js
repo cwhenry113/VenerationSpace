@@ -43,3 +43,32 @@ export default async function findComment(req, res) {
         res.json({ error });
     }
 }
+
+/*
+BOILERPLATE FUNCTION
+ const findVeneration = async () => {
+    console.log('FINDING COMMENT');
+    //!!!THIS WILL ALWAYS DO THE SAME THING. THIS IS BOILERPLATE. FILL IN OR REMOVE THESE FIELDS USING THE FRONTEND.!!!
+    const parent = "6351d6871586cb9e8425b18c";
+    const author = "Phil";
+    const text = "Comment text goes here";
+    const creation_date = new Date("01/01/2021");
+    const last_update = new Date("01/02/2021");
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    const res = await fetch('/api/comment/find', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        parent: `${parent}`,
+        author: `${author}`,
+        text: `${text}`,
+        createdAt: `${creation_date}`,
+        updatedAt: `${last_update}`,
+      }),
+    });
+    const data = await res.json();
+    console.log(data);
+  };
+*/

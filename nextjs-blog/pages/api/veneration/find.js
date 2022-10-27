@@ -46,3 +46,38 @@ export default async function findVeneration(req, res) {
         res.json({ error });
     }
 }
+
+/*
+BOILERPLATE FUNCTION
+ const findVeneration = async () => {
+    console.log('FINDING VENERATION');
+    //!!!THIS WILL ALWAYS DO THE SAME THING. THIS IS BOILERPLATE. FILL IN OR REMOVE THESE FIELDS USING THE FRONTEND.!!!
+    const firstName = "John";
+    const lastName = "Doe";
+    const middleName = "Hubert";
+    const bday = new Date("01/01/1900");
+    const death = new Date("01/01/2000");
+    const bio = "This is a short bio for the boilerplate function"
+    const creation_date = new Date("01/01/2021");
+    const last_update = new Date("01/02/2021");
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    const res = await fetch('/api/veneration/find', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        givenName: `${firstName}`,
+        familyName: `${lastName}`,
+        middleName: `${middleName}`,
+        born: `${bday}`,
+        died: `${death}`,
+        bio: `${bio}`,
+        createdAt: `${creation_date}`,
+        updatedAt: `${last_update}`,
+      }),
+    });
+    const data = await res.json();
+    console.log(data);
+  };
+*/

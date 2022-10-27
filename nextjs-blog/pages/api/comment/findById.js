@@ -22,3 +22,24 @@ export default async function findVeneration(req, res) {
         res.json({ error });
     }
 }
+
+/*
+BOILERPLATE FUNCTION
+ const findCommentById = async () => {
+    console.log('FINDING COMMENT BY ID');
+    //!!!THIS WILL ALWAYS DO THE SAME THING. THIS IS BOILERPLATE. FILL IN OR REMOVE THESE FIELDS USING THE FRONTEND.!!!
+    const id = "6351d6871586cb9e8425b18c"
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    const res = await fetch('/api/comment/findById', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        _id: `${id}`,
+      }),
+    });
+    const data = await res.json();
+    console.log(data);
+  };
+*/

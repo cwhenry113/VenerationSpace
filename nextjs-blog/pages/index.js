@@ -9,10 +9,10 @@ import {
 
 export default function Home() {
   const createVeneration = async () => {
-    console.log('PRESSED THE BUTTON');
+    console.log('CREATING VENERATION');
     //To-do: fill data from a form
-    const firstName = "Frontpage";
-    const lastName = "Addition";
+    const firstName = "John";
+    const lastName = "Doe";
     const res = await fetch('/api/veneration/add', {
       method: 'POST',
       headers: {

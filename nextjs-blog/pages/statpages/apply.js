@@ -16,17 +16,31 @@ export default function Apply(){
       <div class = "ui equal width middle aligned center aligned grid" style={{ backgroundImage: "url(/bioPictures/background.jpg)", backgroundSize: 'cover', paddingTop: '6em'}} >
         <div class="ui massive message" style = {{ margin:'5rem'}}>
           <form class="ui form">
+          <label style={{fontSize:"3rem"}}>Apply for a Page</label>
             <div class="massive field">
-              <label style={{fontSize:"2rem"}}>First Name</label>
+              <br/>
+              <label style={{fontSize:"2rem"}}>Your First Name</label>
               <input type="text" name="first-name" style={{fontSize:"2rem"}}/>
             </div>
             <div class="massive field">
-              <label style={{fontSize:"2rem"}}>Last Name</label>
+              <label style={{fontSize:"2rem"}}>Your Last Name</label>
               <input type="text" name="last-name" style={{fontSize:"2rem"}}/>
             </div>
             <div class="massive field">
-              <label style={{fontSize:"2rem"}}>Guardian of who</label>
-              <input type="text" name="g-name" style={{fontSize:"2rem"}}/>
+              <label style={{fontSize:"2rem"}}>Departed First Name</label>
+              <input type="text" name="d-first-name" style={{fontSize:"2rem"}}/>
+            </div>
+            <div class="massive field">
+              <label style={{fontSize:"2rem"}}>Departed Middle Name</label>
+              <input type="text" name="d-middle-name" style={{fontSize:"2rem"}}/>
+            </div>
+            <div class="massive field">
+              <label style={{fontSize:"2rem"}}>Departed Last Name</label>
+              <input type="text" name="d-last-name" style={{fontSize:"2rem"}}/>
+            </div>
+            <div class="massive field">
+              <label style={{fontSize:"2rem"}}>Your Relation to the Departed</label>
+              <input type="text" name="relation" style={{fontSize:"2rem"}}/>
             </div>
             <button class="ui color1 button" type="submit">Submit</button>
           </form>

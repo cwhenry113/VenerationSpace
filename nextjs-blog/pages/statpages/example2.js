@@ -13,8 +13,6 @@ import { Search } from '/components/Search';
 import { UserInput } from '/components/UserInput';
 const src1 = 'https://images.unsplash.com/photo-1620506117452-99cd6b6dcd3e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80'
 
-
-
 export default function About(){
     return(
       <div className="container" style={{ backgroundImage: "url(/bioPictures/background.jpg)", backgroundSize: 'cover'}}>
@@ -22,7 +20,12 @@ export default function About(){
       <NavBarOther />
       <Container text style={{ paddingTop: '6em' }}>
       <Search />
-
+      <Grid.Column style={{ textAlign: "right" }}>
+            <button class="ui right labeled icon button">
+              <i class="configure icon"></i>
+              Options
+            </button>
+          </Grid.Column>
       <h2 style={{textAlign: "center"}}>Robert Smith</h2>
       <h2 style={{textAlign: "center"}}>1942-2022</h2>
       

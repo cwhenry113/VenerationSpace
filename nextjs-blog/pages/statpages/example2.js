@@ -55,9 +55,9 @@ export default function About(){
       </form>
       </h3>
       </Container>
-  
+
       <div class="ui divider"></div>
-  
+
     </div>
-    )
+  )
 }

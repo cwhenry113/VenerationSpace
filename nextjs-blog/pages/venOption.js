@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import React from 'react';
 import 'semantic-ui-css/semantic.min.css'
 import 'semantic-ui-css/test2.css'

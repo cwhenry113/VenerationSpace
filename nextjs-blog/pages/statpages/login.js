@@ -57,12 +57,24 @@ export default function Login(){
       
       <div class = "ui equal width middle aligned center aligned grid" style={{ backgroundImage: "url(/bioPictures/background.jpg)", backgroundSize: 'cover'}} >
         <div class="ui massive message" style = {{ margin:'5rem'}}>
-                {
-                  pageState.error !== '' && <p>{simplifyError(pageState.error)}</p>
-                }
-                <input onChange={handleFieldChange} value={authState.username} label="Username" id='username' />
-                <input onChange={handleFieldChange} value={authState.password} label="Password" type='password' id='password' />
-                <button disabled={pageState.processing} onClick={handleAuth} variant='contained'>Login</button>
+                
+                
+                
+                
+                <form class="ui form">
+                    <div class="massive field">
+                    <label style={{fontSize:"2rem"}}>Username</label>
+                    <input onChange={handleFieldChange} value={authState.username} label="Username" id='username' style={{fontSize:"2rem"}}/>
+                    </div>
+                    <div class="massive field">
+                    <label style={{fontSize:"2rem"}}>Password</label>
+                    <input onChange={handleFieldChange} value={authState.password} label="Password" type='password' id='password' style={{fontSize:"2rem"}}/>
+                    </div>
+                        {
+                            pageState.error !== '' && <p>{simplifyError(pageState.error)}</p>
+                        }
+                    <button disabled={pageState.processing} onClick={handleAuth} class="ui color1 button" variant='contained'>Login</button>
+                </form>
         </div>
       </div>
         <style jsx>{`

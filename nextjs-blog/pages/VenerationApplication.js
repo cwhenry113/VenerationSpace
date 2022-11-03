@@ -17,8 +17,7 @@ import { NavBar } from './components/NavBar';
     <Grid columns={2} relaxed='very'>
       <Grid.Column>
       
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf6rhkqn_sy0R8FSweQtVNXPGFoJJg2hrXHF9l6xxN9USgpEg/viewform?embedded=true" width="640" height="1455" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-   
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf6rhkqn_sy0R8FSweQtVNXPGFoJJg2hrXHF9l6xxN9USgpEg/viewform?embedded=true" width="640" height="1641" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>   
     </Grid.Column>
      </Grid>
     

@@ -16,7 +16,6 @@ export const NavBar = (props) => {
           Veneration Space
         </Menu.Item>
         <Menu.Item as='a' href="/">Home</Menu.Item>
-        <Menu.Item as='a' href="/statpages/about">About</Menu.Item>
         <Menu.Item as='a' href="/statpages/apply">Apply</Menu.Item>
         <Menu.Item as='a' href="/statpages/search">Search</Menu.Item>
         <Menu.Item as='a' href="/statpages/example2">Create</Menu.Item>

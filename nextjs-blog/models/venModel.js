@@ -10,6 +10,7 @@ const venSchema = new Schema({
   born: Date,
   died: Date,
   bio: String,
+  comments: [String]
 },
   {
     timestamps: true,

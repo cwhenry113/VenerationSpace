@@ -15,11 +15,6 @@ const Form = ({ formId, venForm, newVen = true }) => {
   })
   const picURL = "test";
 
-    /**
-   * handleImageChange
-   * @description Triggers when the file input changes (ex: when a file is selected)
-   */
-
   const putData = async (form) => {
     const { id } = router.query
     try {
@@ -78,27 +73,12 @@ const Form = ({ formId, venForm, newVen = true }) => {
     return err
   }
 
-  async function handleSubmit(e){
+  const handleSubmit = (e) => {
     e.preventDefault()
-    const form = e.currentTarget;
-    const fileInput = Array.from(form.elements).find(({ name }) => name === 'file')
-    const formData = new FormData();
-    for ( const file of fileInput.files){
-      formData.append('file', file);
-    }
-    formData.append('upload_preset', 'ven-images');
-    setUploadData(data);
-    const data = await fetch ('https://api.cloudinary.com/v1_1/dzkjzhzlt/image/upload', {
-      method: 'POST',
-      body: formData
-    }).then(r => r.json());
-    console.log('data', data)
-    picURL = data.secure_url
-    console.log(picURL)
-    
     const errs = formValidate()
     if (Object.keys(errs).length === 0) {
-      newVen ? postData(form) : putData(form)
+      handleImageSubmit(e);
+      newVen ? postData(form) : putData(form);
     } else {
       setErrors({ errs })
     }
@@ -119,17 +99,25 @@ const Form = ({ formId, venForm, newVen = true }) => {
     }
   }
 
-    /**
-   * handleSubmit
-   * @description Triggers when the main form is submitted
-   */
+  async function handleImageSubmit(e){
+    e.preventDefault()
+    const form = e.currentTarget;
+    const fileInput = Array.from(form.elements).find(({ name }) => name === 'file')
+    const formData = new FormData();
+    for ( const file of fileInput.files){
+      formData.append('file', file);
+    }
+    formData.append('upload_preset', 'ven-images');
+    setUploadData(data);
+    const data = await fetch ('https://api.cloudinary.com/v1_1/dzkjzhzlt/image/upload', {
+      method: 'POST',
+      body: formData
+    }).then(r => r.json());
+    picURL = data.secure_url
+  }
 
-     /*async function handleSubmit(event) {
-      event.preventDefault();
-    }*/
   return (
     <>
-
       <form id={formId} onSubmit={handleSubmit}>
         <label htmlFor="givenName">Given/First Name</label>
         <input
@@ -150,7 +138,8 @@ const Form = ({ formId, venForm, newVen = true }) => {
           onChange={handleTextChange}
           required
         />
-          <p>
+        
+        <p>
             <input type="file" name="file" onChange={handleImageChange}/>
           </p>
           
@@ -165,8 +154,7 @@ const Form = ({ formId, venForm, newVen = true }) => {
           {uploadData && (
             <code><pre>{JSON.stringify(uploadData, null, 2)}</pre></code>
           )}
-        </form>
-
+      </form>
       <p>{message}</p>
       <div>
         {Object.keys(errors).map((err, index) => (

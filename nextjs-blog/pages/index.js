@@ -6,26 +6,11 @@ import { NavBar} from '/components/NavBar';
 import {
   Image
 } from 'semantic-ui-react'
+import { useSession } from 'next-auth/react'
 
 export default function Home() {
-  const createVeneration = async () => {
-    console.log('CREATING VENERATION');
-    //To-do: fill data from a form
-    const firstName = "John";
-    const lastName = "Doe";
-    const res = await fetch('/api/veneration/add', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        givenName: `${firstName}`,
-        familyName: `${lastName}`,
-      }),
-    });
-    const data = await res.json();
-    console.log(data);
-  };
+  
+  const { data: session, status } = useSession()
 
   return (
 
@@ -35,11 +20,11 @@ export default function Home() {
         <link rel="icon" href="/cross.ico" />
       </Head>
       <NavBar />
-      <div class = "ui equal width middle aligned center aligned grid" style={{ backgroundImage: "url(/bioPictures/background.jpg)", backgroundSize: 'cover', paddingTop: '6em'}} >
-        <div class="column six wide middle aligned grid" >
-        <div class = "ui equal width middle aligned center aligned grid" style={{ backgroundImage: "url(/bioPictures/background.jpg)", backgroundSize: 'cover', paddingTop: '6em'}} >
-      <div class="ui massive message" style = {{ margin:'2rem', padding:'20px'}}>
-        <div class="header">
+      <div className = "ui equal width middle aligned center aligned grid" style={{ backgroundImage: "url(/bioPictures/background.jpg)", backgroundSize: 'cover', paddingTop: '6em'}} >
+        <div className="column six wide middle aligned grid" >
+        <div className = "ui equal width middle aligned center aligned grid" style={{ backgroundImage: "url(/bioPictures/background.jpg)", backgroundSize: 'cover', paddingTop: '6em'}} >
+      <div className="ui massive message" style = {{ margin:'2rem', padding:'20px'}}>
+        <div className="header">
           About Veneration Space
         </div>
         <p><br/>Veneration Space is a website used to honor the dead by creating a tribute webpage for them. 
@@ -50,8 +35,8 @@ export default function Home() {
       </div>
     </div>
         </div>
-        <div class="column ten wide">
-          <div class="ui large image">
+        <div className="column ten wide">
+          <div className="ui large image">
             <Image src="/bioPictures/logo4.png" size='massive' centered />
           </div>
         </div>

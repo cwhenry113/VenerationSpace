@@ -9,13 +9,14 @@ import { NavBarOther } from '/components/NavBarOther';
 import { Search } from '/components/Search';
 import { UserInput } from '/components/UserInput';
 const src1 = 'https://images.unsplash.com/photo-1620506117452-99cd6b6dcd3e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80'
+var personId = "636c7abcc24146f70adb5536"
 
-export default function About(){
+export default function About(){  
   //Gets person's name
   const [name, setName] = useState('')
   useEffect(() => {getName();}, [])
   const getName = () => {
-    axios.get('http://localhost:8000/api/getOne/636c7abcc24146f70adb5536')
+    axios.get('http://localhost:8000/api/getOne/'+ personId)
     .then(res => {
       console.log(res.data.name)
       setName(res.data.name)
@@ -27,7 +28,7 @@ export default function About(){
   const [dates, setDates] = useState('')
   useEffect(() => {getDate();}, [])
   const getDate = () => {
-    axios.get('http://localhost:8000/api/getOne/636c7abcc24146f70adb5536')
+    axios.get('http://localhost:8000/api/getOne/' + personId)
     .then(res => {
       console.log(res.data.dates)
       setDates(res.data.dates)
@@ -39,7 +40,7 @@ export default function About(){
   const [bio, setBio] = useState('')
   useEffect(() => {getBio();}, [])
   const getBio = () => {
-    axios.get('http://localhost:8000/api/getOne/636c7abcc24146f70adb5536')
+    axios.get('http://localhost:8000/api/getOne/' + personId)
     .then(res => {
       console.log(res.data.bio)
       setBio(res.data.bio)

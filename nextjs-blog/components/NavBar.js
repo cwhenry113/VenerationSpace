@@ -11,14 +11,39 @@ export const NavBar = (props) => {
     return (
         <Menu fixed='top' inverted size='massive' style={{ background: '#547FE8', color: '#FFFFFF'}}>
       <Container>
-        <Menu.Item as='a' header>
+        <Menu.Item header>
           <Image size='mini' src='/bioPictures/logo3.png' style={{ marginRight: '1.5em' }} />
           Veneration Space
         </Menu.Item>
         <Menu.Item as='a' href="/">Home</Menu.Item>
-        <Menu.Item as='a' href="/statpages/apply">Apply</Menu.Item>
+        {session && session.guardian == 'true' && (
+          <>
+          </>
+        )}
+        {!session && (
+          <>
+           <Menu.Item as='a' href="/VenerationApplication">Apply</Menu.Item>
+          </>
+        )}
+        {session && session.guardian == 'false' && (
+          <>
+           <Menu.Item as='a' href="/VenerationApplication">Apply</Menu.Item>
+          </>
+        )}
         <Menu.Item as='a' href="/statpages/search">Search</Menu.Item>
-        <Menu.Item as='a' href="/statpages/example2">Create</Menu.Item>
+        {session && session.guardian == 'true' && (
+          <>
+        <Menu.Item as='a' href="/create">Create</Menu.Item>
+          </>
+        )}
+        {!session && (
+          <>
+          </>
+        )}
+        {session && session.guardian == 'false' && (
+          <>
+          </>
+        )}
         <Menu.Item as='a' href="/statpages/login">
         {!session && (
           <>

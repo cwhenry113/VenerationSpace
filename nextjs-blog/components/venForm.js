@@ -1,8 +1,11 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { mutate } from 'swr'
+import { useSession } from 'next-auth/react'
 
 const Form = ({ formId, venForm, newVen = true }) => {
+  
+  const { data: session, status } = useSession()
   const router = useRouter()
   const contentType = 'application/json'
   const [errors, setErrors] = useState({})
@@ -117,8 +120,10 @@ const Form = ({ formId, venForm, newVen = true }) => {
   }
 
   return (
-    <>
-      <form id={formId} onSubmit={handleSubmit}>
+    
+    <>{session && session.guardian == 'true' && (
+      <>
+        <form id={formId} onSubmit={handleSubmit}>
         <label htmlFor="givenName">Given/First Name</label>
         <input
           type="text"
@@ -161,6 +166,14 @@ const Form = ({ formId, venForm, newVen = true }) => {
           <li key={index}>{err}</li>
         ))}
       </div>
+      </>
+    )}
+    {session && session.guardian != 'true' && (
+      <p>You must be a guardian to create a memorial</p>
+    )}
+    {!session && (
+      <p>You must be a guardian to create a memorial</p>
+    )}
     </>
   )
 }

@@ -5,12 +5,30 @@ const dataSchema = new mongoose.Schema({
         required: true,
         type: String
     },
-    dates:{
+    birthDate:{
+        required: true,
+        type: String
+    },
+    deathDate:{
+        required: true,
+        type: String
+    },
+    pictureURL: {
         required: true,
         type: String
     },
     bio: {
         required: true,
+        type: String
+    },
+    guardian: {
+        required: true,
+        type: String
+    },
+    dateCreated: {
+        type: String
+    },
+    dateUpdated: {
         type: String
     }
 })

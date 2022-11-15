@@ -13,10 +13,9 @@ export default async function findVeneration(req, res) {
         console.log('CONNECTING TO MONGO');
         await connectMongo();
         console.log('CONNECTED TO MONGO');
-
-        console.log('FINDING DOCUMENT');
-        const foundVen = await Veneration.findById(req.body).exec();
+        const foundVen = await Veneration.find(req.body);
         res.json({ foundVen });
+        console.log(foundVen);
     } catch (error) {
         console.log(error);
         res.json({ error });

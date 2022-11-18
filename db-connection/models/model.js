@@ -1,7 +1,15 @@
 const mongoose = require('mongoose');
 
 const dataSchema = new mongoose.Schema({
-    name: {
+    firstName: {
+        required: true,
+        type: String
+    },
+    middleName: {
+        required: true,
+        type: String
+    },
+    lastName: {
         required: true,
         type: String
     },
@@ -21,7 +29,11 @@ const dataSchema = new mongoose.Schema({
         required: true,
         type: String
     },
-    guardian: {
+    guardianFirstName: {
+        required: true,
+        type: String
+    },
+    guardianLastName: {
         required: true,
         type: String
     },

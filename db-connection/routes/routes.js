@@ -6,9 +6,17 @@ const Model = require('../models/model');
 //Post Method
 router.post('/post', async (req, res) => {
     const data = new Model({
-        name: req.body.name,
-        dates: req.body.dates,
-        bio: req.body.bio
+        firstName: req.body.firstName,
+        middleName: req.body.middleName,
+        lastName: req.body.lastName,
+        bio: req.body.bio,
+        birthDate: req.body.birthDate,
+        deathDate: req.body.deathDate,
+        pictureURL: req.body.pictureURL,
+        guardianFirstName: req.body.guardianFirstName,
+        guardianLastName: req.body.guardianLastName,
+        dateCreated: req.body.dateCreated,
+        dateUpdated: req.body.dateUpdated
     })
 
     try {
@@ -64,7 +72,7 @@ router.delete('/delete/:id', async (req, res) => {
     try {
         const id = req.params.id;
         const data = await Model.findByIdAndDelete(id)
-        res.send(`Document with ${data.name} has been deleted..`)
+        res.send(`${data.name}'s page has been deleted..`)
     }
     catch (error) {
         res.status(400).json({ message: error.message })

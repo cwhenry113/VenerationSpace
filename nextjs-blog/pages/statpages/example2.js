@@ -13,7 +13,7 @@ export default function About(){
   const [pic, setPic] = useState('')
   useEffect(() => {getPic();}, [])
   const getPic = () => {
-    axios.get('http://localhost:3000/api/getOne/'+ personId)
+    axios.get('http://localhost:8000/api/getOne/'+ personId)
     .then(res => {
       setPic(res.data.pictureURL.toString())
     }).catch(err => {
@@ -24,7 +24,7 @@ export default function About(){
     const [name, setName] = useState('')
     useEffect(() => {getName();}, [])
     const getName = () => {
-      axios.get('http://localhost:3000/api/getOne/'+ personId)
+      axios.get('http://localhost:8000/api/getOne/'+ personId)
       .then(res => {
         console.log(res.data.name)
         setName(res.data.firstName + " " + res.data.middleName + " " + res.data.lastName)
@@ -36,7 +36,7 @@ export default function About(){
     const [dates, setDates] = useState('')
     useEffect(() => {getDate();}, [])
     const getDate = () => {
-      axios.get('http://localhost:3000/api/getOne/' + personId)
+      axios.get('http://localhost:8000/api/getOne/' + personId)
       .then(res => {
         setDates(res.data.birthDate + "-" + res.data.deathDate)
       }).catch(err => {
@@ -47,7 +47,7 @@ export default function About(){
     const [bio, setBio] = useState('')
     useEffect(() => {getBio();}, [])
     const getBio = () => {
-      axios.get('http://localhost:3000/api/getOne/' + personId)
+      axios.get('http://localhost:8000/api/getOne/' + personId)
       .then(res => {
         console.log(res.data.bio)
         setBio(res.data.bio)

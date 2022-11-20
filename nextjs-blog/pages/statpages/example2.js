@@ -65,16 +65,22 @@ export default function About(){
               <i class="configure icon"></i>
               Options
             </button>
-          </Grid.Column>
-      <h1 style={{textAlign: "center", fontSize:"3vw", fontFamily:"MrsEaves-Italic"}}>{name}</h1>
-      <h3 style={{textAlign: "center", fontSize:"1.5vw"}}>{dates}</h3>
+            </Grid.Column>
+            <div class="ui massive message" style = {{ margin:'5rem'}}>
+
+            <h1 style={{textAlign: "center", fontSize:"50px", fontFamily:"MrsEaves-Italic"}}>{name}</h1>
+      <h3 style={{textAlign: "center", fontSize:"30px"}}>{dates}</h3>
       <Image src={pic} size='medium' centered />
-        <p text style={{ marginTop: '2em', fontSize:"1.5vw", fontFamily:"MrsEaves-Italic"}}>{bio}</p>
+        <p text style={{ marginTop: '2em', fontSize:"20px", fontFamily:"MrsEaves-Italic"}}>{bio}</p>
       <h3 style={{textAlign: "center"}}>Add Memory
       <form>
         <input align="right" type="text" id="comment" name="comment"/>
       </form>
       </h3>
+
+
+            </div>
+
       </Container>
 
       <div class="ui divider"></div>

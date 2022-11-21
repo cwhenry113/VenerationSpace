@@ -77,10 +77,7 @@ export default function About(){
         <input align="right" type="text" id="comment" name="comment"/>
       </form>
       </h3>
-
-
             </div>
-
       </Container>
 
       <div class="ui divider"></div>

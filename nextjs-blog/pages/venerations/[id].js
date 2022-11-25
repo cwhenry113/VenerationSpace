@@ -12,52 +12,17 @@ export default function About(){
   const router = useRouter()
   const { id } = router.query
   var personId = id
-  //Gets person's photo
-  const [pic, setPic] = useState('')
-  useEffect(() => getPic())
-  const getPic = () => {
+
+  const [full, setFull] = useState('')
+  useEffect(() => getFull())
+  const getFull = () => {
     axios.get('http://localhost:8000/api/getOne/'+ personId)
     .then(res => {
-      setPic(res.data.pictureURL.toString())
+      setFull(res.data)
     }).catch(err => {
       console.log(err)
     })
   }
-    //Gets person's name
-    const [name, setName] = useState('')
-    useEffect(() => getName())
-    const getName = () => {
-      axios.get('http://localhost:8000/api/getOne/'+ personId)
-      .then(res => {
-        console.log(res.data.name)
-        setName(res.data.firstName + " " + res.data.middleName + " " + res.data.lastName)
-      }).catch(err => {
-        console.log(err)
-      })
-    }
-    //Gets person's birth and death dates
-    const [dates, setDates] = useState('')
-    useEffect(() => getDate())
-    const getDate = () => {
-      axios.get('http://localhost:8000/api/getOne/' + personId)
-      .then(res => {
-        setDates(res.data.birthDate + "-" + res.data.deathDate)
-      }).catch(err => {
-        console.log(err)
-      })
-    }
-    //Gets person's bio
-    const [bio, setBio] = useState('')
-    useEffect(() => getBio)
-    const getBio = () => {
-      axios.get('http://localhost:8000/api/getOne/' + personId)
-      .then(res => {
-        console.log(res.data.bio)
-        setBio(res.data.bio)
-      }).catch(err => {
-        console.log(err)
-      })
-    }
 
     return(
       <div className="container" style={{ backgroundImage: "url(/bioPictures/background.jpg)", backgroundSize: 'cover'}}>
@@ -71,10 +36,10 @@ export default function About(){
             </button>
             </Grid.Column>
             <div class="ui massive message" style = {{ margin:'5rem'}}>
-            <h1 style={{textAlign: "center", fontSize:"50px", fontFamily:"MrsEaves-Italic"}}>{name}</h1>
-      <h3 style={{textAlign: "center", fontSize:"30px"}}>{dates}</h3>
-      <Image src={pic} size='medium' centered />
-        <p text style={{ marginTop: '2em', fontSize:"20px", fontFamily:"MrsEaves-Italic"}}>{bio}</p>
+            <h1 style={{textAlign: "center", fontSize:"50px", fontFamily:"MrsEaves-Italic"}}>{full.fullName}</h1>
+      <h3 style={{textAlign: "center", fontSize:"30px"}}>{full.birthDate} - {full.deathDate}</h3>
+      <Image src={full.pictureURL} size='medium' centered />
+        <p text style={{ marginTop: '2em', fontSize:"20px", fontFamily:"MrsEaves-Italic"}}>{full.bio}</p>
       <h3 style={{textAlign: "center"}}>Add Memory
       <form>
         <input align="right" type="text" id="comment" name="comment"/>

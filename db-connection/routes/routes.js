@@ -6,15 +6,12 @@ const Model = require('../models/model');
 //Post Method
 router.post('/post', async (req, res) => {
     const data = new Model({
-        firstName: req.body.firstName,
-        middleName: req.body.middleName,
-        lastName: req.body.lastName,
+        fullName: req.body.fullName,
         bio: req.body.bio,
         birthDate: req.body.birthDate,
         deathDate: req.body.deathDate,
         pictureURL: req.body.pictureURL,
-        guardianFirstName: req.body.guardianFirstName,
-        guardianLastName: req.body.guardianLastName,
+        guardianUser: req.body.guardianUser,
         dateCreated: req.body.dateCreated,
         dateUpdated: req.body.dateUpdated
     })

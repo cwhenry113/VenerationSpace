@@ -1,15 +1,7 @@
 const mongoose = require('mongoose');
 
 const dataSchema = new mongoose.Schema({
-    firstName: {
-        required: true,
-        type: String
-    },
-    middleName: {
-        required: true,
-        type: String
-    },
-    lastName: {
+    fullName: {
         required: true,
         type: String
     },
@@ -29,11 +21,7 @@ const dataSchema = new mongoose.Schema({
         required: true,
         type: String
     },
-    guardianFirstName: {
-        required: true,
-        type: String
-    },
-    guardianLastName: {
+    guardianUser: {
         required: true,
         type: String
     },

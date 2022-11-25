@@ -7,6 +7,7 @@ import 'semantic-ui-css/test2.css'
 import { NavBar } from '/components/NavBar';
 
 export default function Search(){
+  
   const [data, setPages] = useState('')
   useEffect(() => {getPages();}, [])
   const getPages = async () => {
@@ -21,7 +22,7 @@ export default function Search(){
   const venerations = Array.from(data).map((data) =>{
     return(
       <div key = {data._id}>
-        <div><a href={'/venerations/'+ data._id}> {data.firstName + " " + data.middleName + " " + data.lastName } </a></div>
+        <div><a href={'/venerations/'+ data._id}> {data.fullName} </a></div>
      <br></br>
       </div>
     )

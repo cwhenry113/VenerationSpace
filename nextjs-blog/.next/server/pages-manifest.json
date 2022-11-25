@@ -1,5 +1,9 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js"
+  "/_document": "pages/_document.js",
+  "/venerations/[id]": "pages/venerations/[id].js",
+  "/venerations/update/[id]": "pages/venerations/update/[id].js",
+  "/api/veneration/save": "pages/api/veneration/save.js",
+  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js"
 }

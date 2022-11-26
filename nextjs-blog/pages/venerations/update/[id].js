@@ -59,6 +59,15 @@ const handleSubmit = async (e) => {
     "birthDate": birthDate,
     "deathDate": deathDate
   })
+  .then(function(response) {
+    res.send(response.data)
+})
+.catch(function(error) {
+    res.send({
+        status: '500',
+        message: error
+    })})
+  
 };
 
 function handleImageChange(changeEvent) {

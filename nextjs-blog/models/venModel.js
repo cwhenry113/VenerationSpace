@@ -2,21 +2,38 @@ import { Schema, model, models } from 'mongoose';
 
 // Schema for venerations
 const venSchema = new Schema({
-  //Required------------------------------------------
-  givenName: { type: String, required: true, maxLength: 32, minLength: 1 },
-  familyName: { type: String, required: true, maxLength: 32, minLength: 1 },
-  //Non-required--------------------------------------
-  middleName: { type: String, maxLength: 32 },
-  born: Date,
-  died: Date,
-  bio: String,
-  comments: [String]
+  fullName: {
+    required: true,
+    type: String
 },
-  {
-    timestamps: true,
-    unique: true
-  }
+birthDate:{
+    required: true,
+    type: String
+},
+deathDate:{
+    required: true,
+    type: String
+},
+pictureURL: {
+    required: true,
+    type: String
+},
+bio: {
+    required: true,
+    type: String
+},
+guardianUser: {
+    required: true,
+    type: String
+},
+dateCreated: {
+    type: String
+},
+dateUpdated: {
+    type: String
+}
+}
 );
 
-const Veneration = models.Veneration || model('Veneration', venSchema);
+const Veneration = models.Veneration || model('Data', venSchema);
 export default Veneration;

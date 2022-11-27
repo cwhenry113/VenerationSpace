@@ -1,6 +1,7 @@
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import connectMongo from '../../../utils/connectMongo';
+import Account from '../../../models/account';
 connectMongo();
 export const authOptions = {
     pages: {
@@ -12,20 +13,30 @@ export const authOptions = {
             async authorize(credentials, req) {
                 const username = credentials.username;
                 const password = credentials.password;
-                if(credentials.username === "abc" && credentials.password === "test") {
-                    return {
-                            name: credentials.username,
-                            guardian:"true"
-                    }
+                const admin = "true";
+                // find by username: credentials.username, password: credentials.password
+                // if found then determine if admin and return admin and username
+                const adminUser = await Account.findOne({"username": username, "password": password, "admin":admin});
+                if(adminUser){
+                  console.log("adminUser");
+                  return {
+                    name: credentials.username,
+                    guardian:"true"
+                  }
                 }
-                if(credentials.username === "123" && credentials.password === "123") {
+                else{
+                  const user = await Account.findOne({"username": username, "password": password});
+                  if(user){
+                    console.log("user");
                     return {
-                            name: credentials.username,
-                            guardian:"false"
+                      name: credentials.username,
+                      guardian:"false"
                     }
+                  }
+                  else{
+                    return(null);
+                  }
                 }
-
-                return null
             }
         })
     ],
@@ -35,7 +46,6 @@ export const authOptions = {
           if (user) {
             token.guardian = user.guardian;
           }
-    
           return token;
         },
         session: ({ session, token }) => {

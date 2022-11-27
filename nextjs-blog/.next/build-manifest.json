@@ -30,10 +30,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/statpages/login": [
+    "/venerations/[id]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/statpages/login.js"
+      "static/chunks/pages/venerations/[id].js"
     ]
   },
   "ampFirstPages": []

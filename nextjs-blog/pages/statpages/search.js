@@ -1,12 +1,49 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import React from 'react';
+import axios from 'axios';
+import {React, useEffect, useState, Route} from 'react';
 import 'semantic-ui-css/semantic.min.css'
 import 'semantic-ui-css/test2.css'
 import { NavBar } from '/components/NavBar';
 
 export default function Search(){
+  
+  const [data, setPages] = useState('')
+  useEffect(() => {getPages();}, [])
+
+  const getPages = async (id) => {
+    axios.get('http://localhost:8000/api/getAll/'+ id)
+    .then(res => {
+      setPages(res.data)
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+
+
+  const [form, setForm] = useState({
+    name: ''
+})
+
+const handleFieldChange = (e) => {
+  setForm(old => ({ ...old, [e.target.id]: e.target.value }))
+}
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  getPages(form.name);
+};
+  const venerations = Array.from(data).map((data) =>{
     return(
+      <div key = {data._id}>
+        <div><a href={'/venerations/'+ data._id}> {data.fullName} </a></div>
+     <br></br>
+      </div>
+    )
+  })
+
+  return(
+
       <div className="container" style={{ backgroundImage: "url(/bioPictures/background.jpg)", backgroundSize: 'cover'}}>
       <Head style={{ background: '#BEC7E4'}}>
         <title>Veneration Space</title>
@@ -15,24 +52,15 @@ export default function Search(){
       <NavBar />
       <div className = "ui equal width middle aligned center aligned grid" style={{ backgroundImage: "url(/bioPictures/background.jpg)", backgroundSize: 'cover', paddingTop: '6em'}} >
         <div className="ui massive message" style = {{ margin:'5rem', padding:'3rem'}}>
-          <div className="header" style = {{ margin:'2rem auto'}}>
-            Search Veneration Space
-          </div>
-          <form className="ui form">
+        <div className="header" style = {{ margin:'1rem auto'}}>
+          <form onSubmit={handleSubmit}> 
             <div className="massive field">
-              <label style={{fontSize:"2rem"}}>First Name</label>
-              <input type="text" name="fname" style={{fontSize:"2rem"}}/>
+              <input onChange={handleFieldChange} value={form.name} id = "name" style={{fontSize:"2rem"}} placeholder = "Search"/>
             </div>
-            <div className="massive field">
-              <label style={{fontSize:"2rem"}}>Middle Name</label>
-              <input type="text" name="mname" style={{fontSize:"2rem"}}/>
-            </div>
-            <div className="massive field">
-              <label style={{fontSize:"2rem"}}>Last Name</label>
-              <input type="text" name="lname" style={{fontSize:"2rem"}}/>
-            </div>
-            <button className="ui color1 button" type="submit">Search</button>
+            <button className="ui color1 button" variant='contained'>Submit</button>
           </form>
+        </div>
+          {venerations}
         </div>
       </div>
         <style jsx>{`

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { mutate } from 'swr'
 import { useSession } from 'next-auth/react'
+import axios from 'axios';
 
 const Form = ({ formId, venForm, newVen = true }) => {
   
@@ -13,51 +14,12 @@ const Form = ({ formId, venForm, newVen = true }) => {
   const [imageSrc, setImageSrc] = useState();
   const [uploadData, setUploadData] = useState();
   const [form, setForm] = useState({
-    givenName: venForm.givenName,
-    familyName: venForm.familyName
+    fullName: '',
+    bio: '',
+    birthDate: '',
+    deathDate: '',
+    guardianUser: ''
   })
-  const picURL = "test";
-
-  const putData = async (form) => {
-    const { id } = router.query
-    try {
-      const res = await fetch(`/api/veneration/${id}`, {
-        method: 'PUT',
-        headers: {
-          Accept: contentType,
-          'Content-Type': contentType,
-        },
-        body: JSON.stringify(form),
-      })
-      if (!res.ok) {
-        throw new Error(res.status)
-      }
-      const { data } = await res.json()
-      mutate(`/api/veneration/${id}`, data, false)
-      router.push('/')
-    } catch (error) {
-      setMessage('Failed to update veneration')
-    }
-  }
-
-  const postData = async (form) => {
-    try {
-      const res = await fetch('/api/veneration', {
-        method: 'POST',
-        headers: {
-          Accept: contentType,
-          'Content-Type': contentType,
-        },
-        body: JSON.stringify(form),
-      })
-      if (!res.ok) {
-        throw new Error(res.status)
-      }
-      router.push('/')
-    } catch (error) {
-      setMessage('Failed to add veneration')
-    }
-  }
 
   const handleTextChange = (e) => {
     const target = e.target
@@ -69,22 +31,9 @@ const Form = ({ formId, venForm, newVen = true }) => {
     })
   }
 
-  const formValidate = () => {
-    let err = {}
-    if (!form.givenName) err.name = 'Given/First name is required'
-    if (!form.familyName) err.owner_name = 'Family/Last name is required'
-    return err
-  }
-
   const handleSubmit = (e) => {
     e.preventDefault()
-    const errs = formValidate()
-    if (Object.keys(errs).length === 0) {
-      handleImageSubmit(e);
-      newVen ? postData(form) : putData(form);
-    } else {
-      setErrors({ errs })
-    }
+    handleImageSubmit(e, form);
   }
   function handleImageChange(changeEvent) {
     const reader = new FileReader();
@@ -102,7 +51,7 @@ const Form = ({ formId, venForm, newVen = true }) => {
     }
   }
 
-  async function handleImageSubmit(e){
+  async function handleImageSubmit(e, form2){
     e.preventDefault()
     const form = e.currentTarget;
     const fileInput = Array.from(form.elements).find(({ name }) => name === 'file')
@@ -116,7 +65,14 @@ const Form = ({ formId, venForm, newVen = true }) => {
       method: 'POST',
       body: formData
     }).then(r => r.json());
-    picURL = data.secure_url
+    await axios.post('http://localhost:8000/api//post/' , {
+    "fullName": form2.fullName,
+    "bio": form2.bio,
+    "birthDate": form2.birthDate,
+    "deathDate": form2.deathDate,
+    "guardianUser": form2.guardianUser,
+    "pictureURL": data.secure_url
+  })
   }
 
   return (
@@ -124,26 +80,50 @@ const Form = ({ formId, venForm, newVen = true }) => {
     <>{session && session.guardian == 'true' && (
       <>
         <form id={formId} onSubmit={handleSubmit}>
-        <label htmlFor="givenName">Given/First Name</label>
+        <label htmlFor="fullName">Full Name</label>
         <input
           type="text"
-          maxLength="32"
-          name="givenName"
-          value={form.givenName}
+          name="fullName"
+          value={form.fullName}
           onChange={handleTextChange}
           required
         />
 
-        <label htmlFor="familyName">Family/Last Name</label>
+        <label htmlFor="bio">Bio</label>
         <input
           type="text"
-          maxLength="32"
-          name="familyName"
-          value={form.familyName}
+          name="bio"
+          value={form.bio}
+          onChange={handleTextChange}
+          required
+        />
+
+        <label htmlFor="birthDate">Birth Date</label>
+        <input
+          type="text"
+          name="birthDate"
+          value={form.birthDate}
           onChange={handleTextChange}
           required
         />
         
+        <label htmlFor="deathDate">Death Date</label>
+        <input
+          type="text"
+          name="deathDate"
+          value={form.deathDate}
+          onChange={handleTextChange}
+          required
+        />
+
+        <label htmlFor="guardianUser">Set Guardian User</label>
+        <input
+          type="text"
+          name="guardianUser"
+          value={form.guardianUser}
+          onChange={handleTextChange}
+          required
+        />
         <p>
             <input type="file" name="file" onChange={handleImageChange}/>
           </p>

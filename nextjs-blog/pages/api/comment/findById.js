@@ -8,14 +8,14 @@ Request body example:
 import connectMongo from '../../../utils/connectMongo';
 import Comment from '../../../models/comment';
 
-export default async function findVeneration(req, res) {
+export default async function findCommentById(req, res) {
     try {
         console.log('CONNECTING TO MONGO');
         await connectMongo();
         console.log('CONNECTED TO MONGO');
 
         console.log('FINDING DOCUMENT');
-        const foundCom = await Comment.findById(req.body).exec();
+        const foundCom = await Comment.findById().exec();
         res.json({ foundCom });
     } catch (error) {
         console.log(error);

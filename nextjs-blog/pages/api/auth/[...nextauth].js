@@ -18,7 +18,6 @@ export const authOptions = {
                 // if found then determine if admin and return admin and username
                 const adminUser = await Account.findOne({"username": username, "password": password, "admin":admin});
                 if(adminUser){
-                  console.log("adminUser");
                   return {
                     name: credentials.username,
                     guardian:"true"

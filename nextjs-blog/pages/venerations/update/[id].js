@@ -3,9 +3,10 @@ import axios from 'axios';
 import {React, useEffect, useState} from 'react';
 import { mutate } from 'swr'
 import { useSession } from 'next-auth/react'
+import { NavBar } from '../../../components/NavBar';
 import 'semantic-ui-css/semantic.min.css'
 import 'semantic-ui-css/test2.css'
-import {Container, Image, Grid} from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react';
 
 
 export default function About(){ 
@@ -62,6 +63,7 @@ const handleSubmit = async (e) => {
     "birthDate": birthDate,
     "deathDate": deathDate
   })
+  router.push("/venerations/"+ personId)
   .then(function(response) {
     res.send(response.data)
 })
@@ -107,50 +109,83 @@ async function handleImageSubmit(e){
 
 
 return(
-<div>
-    
+<div className="container" style={{ backgroundImage: "url(/bioPictures/background.jpg)", backgroundSize: 'cover', minHeight: '100vh'}}>
+  <NavBar/>
+  <Container style={{ paddingTop: '6em' }}>
   {session && session.user.name == full.guardianUser && (
     <>
-      <form onSubmit={handleSubmit}> 
+    <div class="ui icon message">
+      <i class="exclamation icon"></i>
+      <div class="content">
+        <div class="header">
+            Don't forget to save!
+        </div>
+        <p>Press the "Save changes" button at the bottom when you're done to be sure your Veneration includes your changes.</p>
+      </div>
+    </div>
+    <div className="ui attached segment">
+      <form onSubmit={handleSubmit} className="ui form"> 
         <div className="massive field">
-        <label style={{fontSize:"2rem"}}>Old Name: {full.fullName}</label>
+        <label>
+          <p style={{fontSize:"2rem"}}>Old Name:</p>
+          <p style={{fontWeight: 'normal', fontSize:"1.5rem", margin: "0 3%"}}>{full.fullName}</p>
+        </label>
         <br/>
-        <input onChange={handleFieldChange} value={form.fullName} id = "fullName" style={{fontSize:"2rem"}} placeholder = "Leave blank to not change"/>
+        <input onChange={handleFieldChange} value={form.fullName} id = "fullName" style={{fontSize:"1.5rem", fontFamily: 'system-ui'}} placeholder = "Leave blank to not change"/>
         </div>
         <div className="massive field">
-        <label style={{fontSize:"2rem"}}>Old Bio: {full.bio}</label>
+        <label style={{fontSize:"2rem"}}>
+          <p style={{fontSize:"2rem"}}>Old Bio:</p>
+          <p style={{fontWeight: 'normal', fontSize:"1.5rem", margin: "0 3%"}}>{full.bio}</p>
+        </label>
         <br/>
-        <input onChange={handleFieldChange} value={form.bio} id = "bio" style={{fontSize:"2rem"}} placeholder = "Leave blank to not change"/>
+        <textarea rows="5" onChange={handleFieldChange} value={form.bio} id = "bio" style={{fontSize:"1.5rem", fontFamily: 'system-ui'}} placeholder = "Leave blank to not change"/>
         </div>
         <div className="massive field">
-        <label style={{fontSize:"2rem"}}>Old Birth Date: {full.birthDate}</label>
+        <label style={{fontSize:"2rem"}}>
+          <p style={{fontSize:"2rem"}}>Old Birth Date:</p>
+          <p style={{fontWeight: 'normal', fontSize:"1.5rem", margin: "0 3%"}}>{full.birthDate}</p>
+        </label>
         <br/>
-        <input onChange={handleFieldChange} value={form.birthDate} id = "birthDate" style={{fontSize:"2rem"}} placeholder = "Leave blank to not change"/>
+        <input onChange={handleFieldChange} value={form.birthDate} id = "birthDate" style={{fontSize:"1.5rem", fontFamily: 'system-ui'}} placeholder = "Leave blank to not change"/>
         </div>
         <div className="massive field">
-        <label style={{fontSize:"2rem"}}>Old Death Date: {full.deathDate}</label>
+        <label style={{fontSize:"2rem"}}>
+          <p style={{fontSize:"2rem"}}>Old Death Date:</p>
+          <p style={{fontWeight: 'normal', fontSize:"1.5rem", margin: "0 3%"}}>{full.deathDate}</p>
+        </label>
         <br/>
-        <input onChange={handleFieldChange} value={form.deathDate} id = "deathDate" style={{fontSize:"2rem"}} placeholder = "Leave blank to not change"/>
+        <input onChange={handleFieldChange} value={form.deathDate} id = "deathDate" style={{fontSize:"1.5rem", fontFamily: 'system-ui'}} placeholder = "Leave blank to not change"/>
         </div>
-        <label style={{fontSize:"2rem"}}>Upload New Photo:</label>
+        <label style={{fontSize:"2rem"}}>
+          <p style={{fontWeight: 'bold', fontSize:"2rem"}}>Upload New Photo:</p>
+        </label>
         <p>
-        <input type="file" name="file" onChange={handleImageChange}/>
+        <input type="file" name="file"  accept="image/png, image/jpeg" onChange={handleImageChange}/>
+        <br/><br/>
+        <img src={imageSrc} />
         </p>
-        <button className="ui color1 button" variant='contained'>Submit</button>
+        
+        <button className="ui color1 button" variant='contained'>Save Changes</button>
       </form>
+
+    </div>
+      
     </>
   )}
   
   {!session && (
           <>
-           <p>You are not the guardian of this page</p>
+           <div className = "ui massive message">You are not the guardian of this page</div>
           </>
   )}
   {session && session.user.name != full.guardianUser && (
     <>
-      <p>You are not the guardian of this page</p>
+      <div className = "ui massive message">You are not the guardian of this page</div>
     </>
   )}
+  </Container> 
+  
 </div>
 )
 }

@@ -23,7 +23,7 @@ export default function Home() {
       <div className = "ui equal width middle aligned center aligned grid" style={{ backgroundImage: "url(/bioPictures/background.jpg)", backgroundSize: 'cover', paddingTop: '6em'}} >
         <div className="column six wide middle aligned grid" >
         <div className = "ui equal width middle aligned center aligned grid" style={{ backgroundImage: "url(/bioPictures/background.jpg)", backgroundSize: 'cover', paddingTop: '6em'}} >
-      <div className="ui massive message" style = {{ margin:'2rem', padding:'20px'}}>
+      <div className="ui massive message" style = {{ margin:'2rem 0 2rem 7rem', padding:'20px'}}>
         <div className="header">
           About Veneration Space
         </div>

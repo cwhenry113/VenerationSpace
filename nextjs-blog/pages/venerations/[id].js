@@ -45,14 +45,21 @@ export default function About(){
   const venComments = Array.from(comments).map((comments) =>{
     return(
       <div key = {comments._id}>
-        <div> {comments.author}: {comments.text}</div>
+        <div className="ui massive " style = {{borderBottom: "0.01em solid", paddingTop:'5%'}}> 
         {session && session.user.name == full.guardianUser && (
-          <>
-          <button onClick = {() => handleDelete(comments._id)} className="ui color1 button" variant='contained'>Delete</button>
-          </>
-        )}
-            
-        <br></br>
+            <>
+            <button onClick = {() => handleDelete(comments._id)} className="ui color1 button" variant='contained' style = {{float: 'right'}}>
+            <i class="trash icon"></i>
+            </button>
+            </>
+          )}
+          <div style = {{textAlign: 'left', fontSize: '0.75em'}}>
+          {comments.author}:
+          </div>
+          <div style = {{fontSize: '0.5em', overflowWrap: 'break-word', lineHeight: "1.6"}}>
+          {comments.text}
+          </div>
+        </div>
       </div>
     )
   })
@@ -61,12 +68,14 @@ export default function About(){
     getComments()
   };
   const handleSubmit = async (e) => {
-    await axios.post('http://localhost:8000/api//postComment/' , {
-      "parent": personId,
-      "author": session.user.name,
-      "text": form.text
-    })
-    getComments()
+    if(form.text != ''){
+      await axios.post('http://localhost:8000/api//postComment/' , {
+        "parent": personId,
+        "author": session.user.name,
+        "text": form.text
+      })
+      getComments()
+    }
   };
     return(
       <div className="container" style={{ backgroundImage: "url(/bioPictures/background.jpg)", backgroundSize: 'cover'}}>
@@ -78,7 +87,7 @@ export default function About(){
           <button class="ui right labeled icon button">
               <a href={'/venerations/update/'+ personId}>
               <i class="configure icon"></i>
-                Options</a>
+                Edit</a>
             </button>
           </>
         )}
@@ -86,23 +95,23 @@ export default function About(){
 
 
       </Grid.Column>
-      <div class="ui massive message" style = {{ margin:'5rem'}}>
+      <div className="ui massive message" style = {{ margin:'5rem'}}>
       <h1 style={{textAlign: "center", fontSize:"50px", fontFamily:"MrsEaves-Italic"}}>{full.fullName}</h1>
       <h3 style={{textAlign: "center", fontSize:"30px"}}>{full.birthDate} - {full.deathDate}</h3>
       <Image src={full.pictureURL} size='medium' centered />
         <p text style={{ marginTop: '2em', fontSize:"20px", fontFamily:"MrsEaves-Italic"}}>{full.bio}</p>
       <h3 style={{textAlign: "center"}}>Comments
+      </h3>
 
       {session && (
           <>
-          <input onChange={handleFieldChange} value={form.text} id = "text" style={{fontSize:"2rem"}} placeholder = "Leave blank to not change"/>
-          <button onClick = {() => handleSubmit()} className="ui color1 button" variant='contained'>Send</button>
+          <input onChange={handleFieldChange} value={form.text} id = "text" style={{fontSize:"2rem", fontFamily: 'system-ui'}} placeholder = "Comment..."/>
+          <button onClick = {() => handleSubmit()} className="ui color1 button" variant='contained' style = {{float: 'right'}}>Send</button>
           </>
         )}
         <div>
           {venComments}
         </div>
-      </h3>
       
             </div>
       </Container>

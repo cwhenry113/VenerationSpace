@@ -36,7 +36,12 @@ const handleSubmit = async (e) => {
   const venerations = Array.from(data).map((data) =>{
     return(
       <div key = {data._id}>
-        <div><a href={'/venerations/'+ data._id}> {data.fullName} </a></div>
+        <div className = "ui divider" style={{paddingBottom:"2rem"}}>
+          <a href={'/venerations/'+ data._id}> 
+          <p className = "ui header" style={{fontSize:"2rem"}}>{data.fullName}</p>
+          <div className = "ui label">{data.birthDate} - {data.deathDate}</div>
+          </a>
+        </div>
      <br></br>
       </div>
     )
@@ -54,10 +59,14 @@ const handleSubmit = async (e) => {
         <div className="ui massive message" style = {{ margin:'5rem', padding:'3rem'}}>
         <div className="header" style = {{ margin:'1rem auto'}}>
           <form onSubmit={handleSubmit}> 
-            <div className="massive field">
-              <input onChange={handleFieldChange} value={form.name} id = "name" style={{fontSize:"2rem"}} placeholder = "Search"/>
-            </div>
-            <button className="ui color1 button" variant='contained'>Submit</button>
+          <div className="ui icon input">
+          <input onChange={handleFieldChange} value={form.name} id = "name" style={{fontSize:"2rem"}} placeholder = "Search"/>
+            
+            <button className="ui color1 button" variant='contained'>
+              <i className="search icon"></i>
+              </button>
+          </div>
+            
           </form>
         </div>
           {venerations}

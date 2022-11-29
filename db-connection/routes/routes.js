@@ -3,6 +3,8 @@ const router = express.Router()
 module.exports = router;
 const Model = require('../models/model');
 const Comment = require('../models/comments');
+const Accounts = require('../models/accounts');
+
 
 //Post Method
 router.post('/post', async (req, res) => {
@@ -113,5 +115,24 @@ router.delete('/deleteComment/:id', async (req, res) => {
     }
     catch (error) {
         res.status(400).json({ message: error.message })
+    }
+})
+
+router.post('/postUser', async (req, res) => {
+    const data = new Accounts({
+        username: req.body.username,
+        password: req.body.password,
+        email: req.body.email,
+        name: req.body.name,
+        admin: "false"
+    })
+
+    try {
+        const dataToSave = await data.save();
+        res.status(200).json(dataToSave)
+    }
+    catch (error) {
+        res.status(400).json({message: error.message})
+        console.log(error)
     }
 })

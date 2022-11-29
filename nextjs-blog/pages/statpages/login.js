@@ -10,6 +10,7 @@ import { useSession } from "next-auth/react"
 
 export default function Login(){
   const router =  useRouter()
+  const { data: session, status } = useSession()
     const [authState, setAuthState] = useState({
         username: '',
         password: ''
@@ -58,11 +59,9 @@ export default function Login(){
       
       <div className = "ui equal width middle aligned center aligned grid" style={{ backgroundImage: "url(/bioPictures/background.jpg)", backgroundSize: 'cover'}} >
         <div className="ui massive message" style = {{ margin:'5rem'}}>
-                
-                
-                
-                
-                <form className="ui form">
+        {!session && (
+            <>
+              <form className="ui form">
                     <div className="massive field">
                     <label style={{fontSize:"2rem"}}>Username</label>
                     <input onChange={handleFieldChange} value={authState.username} label="Username" id='username' style={{fontSize:"2rem"}}/>
@@ -76,6 +75,17 @@ export default function Login(){
                         }
                     <button disabled={pageState.processing} onClick={handleAuth} className="ui color1 button" variant='contained'>Login</button>
                 </form>
+            </>
+          )}
+          {session && (
+            <>
+              <p>You are already signed In</p>
+            </>
+          )}    
+                
+                
+                
+                
         </div>
       </div>
         <style jsx>{`

@@ -16,10 +16,6 @@ export const NavBar = (props) => {
           Veneration Space
         </Menu.Item>
         <Menu.Item as='a' href="/">Home</Menu.Item>
-        {session && session.guardian == 'true' && (
-          <>
-          </>
-        )}
         {!session && (
           <>
            <Menu.Item as='a' href="/VenerationApplication">Apply</Menu.Item>
@@ -36,29 +32,21 @@ export const NavBar = (props) => {
         <Menu.Item as='a' href="/create">Create</Menu.Item>
           </>
         )}
+        
         {!session && (
-          <>
-          </>
-        )}
-        {session && session.guardian == 'false' && (
-          <>
-          </>
-        )}
-        <Menu.Item as='a' href="/statpages/login">
-        {!session && (
-          <>
-            Login<br />
+          <><Menu.Item as='a' href="/statpages/login">Login<br /></Menu.Item>
+            
           </>
         )}
       {session && (
-          <>
-            Signed in as {session.user.name}<br />
+          <><Menu.Item>Signed in as {session.user.name}<br /></Menu.Item>
+            
           </>
         )}
-          </Menu.Item>
           
-        {!session && (
+          {!session && (
           <>
+            <Menu.Item as='a' href="/statpages/signup">Sign Up</Menu.Item>
           </>
         )}
       {session && (

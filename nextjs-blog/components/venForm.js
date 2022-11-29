@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { mutate } from 'swr'
 import { useSession } from 'next-auth/react'
+import { NavBar } from '../components/NavBar';
+import {Container, Image, Grid} from 'semantic-ui-react'
 import axios from 'axios';
 
 const Form = ({ formId, venForm, newVen = true }) => {
@@ -34,6 +36,7 @@ const Form = ({ formId, venForm, newVen = true }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     handleImageSubmit(e, form);
+    router.push("/")
   }
   function handleImageChange(changeEvent) {
     const reader = new FileReader();
@@ -77,83 +80,111 @@ const Form = ({ formId, venForm, newVen = true }) => {
 
   return (
     
-    <>{session && session.guardian == 'true' && (
-      <>
-        <form id={formId} onSubmit={handleSubmit}>
-        <label htmlFor="fullName">Full Name</label>
-        <input
-          type="text"
-          name="fullName"
-          value={form.fullName}
-          onChange={handleTextChange}
-          required
-        />
+    <><div className="container" style={{ backgroundImage: "url(/bioPictures/background.jpg)", backgroundSize: 'cover', minHeight: '100vh'}}>
+      <NavBar/>
+      <Container style={{ paddingTop: '6em' }}>
+      {session && session.guardian == 'true' && (
+        <>
+        <div className="ui attached segment">
+        <form id={formId} onSubmit={handleSubmit} className="ui form" style={{paddingTop:"1rem"}}>
+          <label htmlFor="fullName" style={{fontSize:"2rem"}}>Full Name:</label>
+          <br/>
+          <input
+            type="text"
+            name="fullName"
+            value={form.fullName}
+            onChange={handleTextChange}
+            required
+            style={{fontSize:"1.5rem", fontFamily: 'system-ui', margin:"1rem 0"}}
+          />
+          <br/>
 
-        <label htmlFor="bio">Bio</label>
-        <input
-          type="text"
-          name="bio"
-          value={form.bio}
-          onChange={handleTextChange}
-          required
-        />
+          <label htmlFor="bio" style={{fontSize:"2rem"}}>Bio:</label>
+          <br/>
+          <textarea
+            rows = '5'
+            type="text"
+            name="bio"
+            value={form.bio}
+            onChange={handleTextChange}
+            required
+            style={{fontSize:"1.5rem", fontFamily: 'system-ui', margin:"1rem 0"}}
+          />
+          <br/>
 
-        <label htmlFor="birthDate">Birth Date</label>
-        <input
-          type="text"
-          name="birthDate"
-          value={form.birthDate}
-          onChange={handleTextChange}
-          required
-        />
-        
-        <label htmlFor="deathDate">Death Date</label>
-        <input
-          type="text"
-          name="deathDate"
-          value={form.deathDate}
-          onChange={handleTextChange}
-          required
-        />
-
-        <label htmlFor="guardianUser">Set Guardian User</label>
-        <input
-          type="text"
-          name="guardianUser"
-          value={form.guardianUser}
-          onChange={handleTextChange}
-          required
-        />
-        <p>
-            <input type="file" name="file" onChange={handleImageChange}/>
-          </p>
+          <label htmlFor="birthDate" style={{fontSize:"2rem"}}>Birth Date:</label>
+          <br/>
+          <input
+            type="text"
+            name="birthDate"
+            value={form.birthDate}
+            onChange={handleTextChange}
+            required
+            style={{fontSize:"1.5rem", fontFamily: 'system-ui', margin:"1rem 0"}}
+          />
+          <br/>
           
-          <img src={imageSrc} />
-          
-          {imageSrc && !uploadData && (
-            <p>
-              <button>Upload Files</button>
+          <label htmlFor="deathDate" style={{fontSize:"2rem"}}>Death Date:</label>
+          <br/>
+          <input
+            type="text"
+            name="deathDate"
+            value={form.deathDate}
+            onChange={handleTextChange}
+            required
+            style={{fontSize:"1.5rem", fontFamily: 'system-ui', margin:"1rem 0"}}
+          />
+          <br/>
+
+          <label htmlFor="guardianUser" style={{fontSize:"2rem"}}>Set Guardian User:</label>
+          <br/>
+          <input
+            type="text"
+            name="guardianUser"
+            value={form.guardianUser}
+            onChange={handleTextChange}
+            required
+            style={{fontSize:"1.5rem", fontFamily: 'system-ui', margin:"1rem 0"}}
+          />
+          <br/>
+          <label style={{fontSize:"2rem"}}>Upload Image:</label>
+          <br/>
+          <p>
+              <input type="file" name="file" onChange={handleImageChange}/>
             </p>
-          )}
+            
+            <img src={imageSrc} />
+            
+            {imageSrc && !uploadData && (
+              <p>
+                <button className="ui color1 button">Upload Files</button>
+              </p>
+            )}
 
-          {uploadData && (
-            <code><pre>{JSON.stringify(uploadData, null, 2)}</pre></code>
-          )}
-      </form>
-      <p>{message}</p>
-      <div>
-        {Object.keys(errors).map((err, index) => (
-          <li key={index}>{err}</li>
-        ))}
-      </div>
-      </>
-    )}
-    {session && session.guardian != 'true' && (
-      <p>You must be a guardian to create a memorial</p>
-    )}
-    {!session && (
-      <p>You must be a guardian to create a memorial</p>
-    )}
+            {uploadData && (
+              <code><pre>{JSON.stringify(uploadData, null, 2)}</pre></code>
+            )}
+        </form>
+        <p>{message}</p>
+        <div>
+          {Object.keys(errors).map((err, index) => (
+            <li key={index}>{err}</li>
+          ))}
+        </div>
+        </div>
+          
+        </>
+      )}
+      {session && session.guardian != 'true' && (
+        <p>You must be a guardian to create a memorial</p>
+      )}
+      {!session && (
+        <div className = "ui massive message">You must be an admin to create a memorial</div>
+      )}
+      </Container>
+      
+    </div>
+    
     </>
   )
 }
